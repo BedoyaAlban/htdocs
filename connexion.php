@@ -3,7 +3,6 @@
 <html>
 <head>
 	<title>Espace membre PHP and MySQL</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
