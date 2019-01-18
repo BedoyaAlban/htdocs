@@ -1,9 +1,12 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-<h1>Mon super blog !</h1>
-<p><a href="indexx.php">Retour à la liste des billets</a></p>
-
+<div class="row narrow section-intro has-bottom-sep">
+    <div class="col-full">
+		<h3>Mon super blog !</h3>
+		<h1><a href="indexx.php">Retour à la liste des billets</a></h1>
+    </div>
+</div>
 <h2>Commentaire</h2>
 <div class="com">
     <h3>

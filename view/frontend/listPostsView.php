@@ -1,9 +1,12 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-<h1>Mon super blog !</h1>
-<p>Derniers billets du blog :</p>
-
+<div class="row narrow section-intro has-bottom-sep">
+    <div class="col-full"> 
+        <h3>Mon super blog !</h3>
+        <h1>Derniers billets du blog :</h1>
+    </div>
+</div>
 <div class="row blog-content">
             <div class="col-full">
 
