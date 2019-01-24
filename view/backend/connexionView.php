@@ -1,14 +1,12 @@
-<?php include('functions.php') ?>
-<?php $title = 'Espace admin PHP and MySQL'; ?>
+<?php $title = 'Mon blog'; ?>
+
 <?php ob_start(); ?>
 
-	<div class="header">
+<div class="header">
 		<h2>Connexion</h2>
 	</div>
 	
-	<form method="post" action="connexion.php">
-
-		<?php echo display_error(); ?>
+	<form method="post" action="backend.php">
 
 		<div class="input-group">
 			<label>Pseudo</label>
@@ -21,10 +19,7 @@
 		<div class="input-group">
 			<button type="submit" class="btn" name="login_btn">Connexion</button>
 		</div>
-		<p>
-			Pas encore un membre? <a href="inscription.php">S'inscrire</a>
-		</p>
 	</form>
 
 <?php $content = ob_get_clean(); ?>
-<?php require('../view/frontend/template.php'); ?>
+<?php require('../frontend/template.php'); ?>

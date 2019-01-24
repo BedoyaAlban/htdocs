@@ -1,21 +1,22 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-<div class="row narrow section-intro has-bottom-sep">
-    <div class="col-full"> 
-        <h3>Mon super blog !</h3>
-        <h1>Derniers billets du blog :</h1>
+    <div class="row narrow section-intro has-bottom-sep">
+        <div class="col-full"> 
+            <h3>Mon super blog !</h3>
+            <h1>Derniers billets du blog :</h1>
+        </div>
     </div>
-</div>
-<div class="row blog-content">
-            <div class="col-full">
 
-                <div class="blog-list block-1-2 block-tab-full">
-<?php
+    <div class="row blog-content">
+        <div class="col-full">
 
-while ($data = $posts->fetch())
-{
-?>
+            <div class="blog-list block-1-2 block-tab-full">
+                <?php
+
+                while ($data = $posts->fetch())
+                {
+                ?>
                     <article class="col-block">
                                 
                         <div class="blog-date">
@@ -23,7 +24,7 @@ while ($data = $posts->fetch())
                         </div>  
                         
                         <h2 class="h01"><a href="blog-single.html"><?= htmlspecialchars($data['title']) ?></a></h2>
-                        <p>
+                        <p class="lead">
                         <?= nl2br(htmlspecialchars($data['content'])) ?>
                         </p>
 
@@ -31,12 +32,12 @@ while ($data = $posts->fetch())
                                 <a href="indexx.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a>
                         </div>                       
                     </article>
-<?php
-}
-$posts->closeCursor();
-?>
-               </div>
-            </div>        
+                <?php
+                }
+                $posts->closeCursor();
+                ?>
+           </div>
+        </div>        
     </div>
 <?php $content = ob_get_clean(); ?>
 

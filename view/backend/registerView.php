@@ -1,27 +1,20 @@
-<?php include('functions.php') ?>
 <?php $title = 'Mon blog'; ?>
+
 <?php ob_start(); ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Espace membre PHP and MySQL</title>
-</head>
-<body>
+
 	<div class="header">
-		<h2>Inscription</h2>
+			<h2>Créer un nouvel Admin</h2>
 	</div>
 	
-	<form method="post" action="inscription.php">
-
-		<?php echo display_error(); ?>
+	<form method="post" action="backend.php">
 
 		<div class="input-group">
 			<label>Pseudo</label>
-			<input type="text" name="username" value="<?php echo $username; ?>">
+			<input type="text" name="pseudo" >
 		</div>
 		<div class="input-group">
 			<label>Email</label>
-			<input type="email" name="email" value="<?php echo $email; ?>">
+			<input type="email" name="email" >
 		</div>
 		<div class="input-group">
 			<label>Mot de passe</label>
@@ -34,11 +27,9 @@
 		<div class="input-group">
 			<button type="submit" class="btn" name="register_btn">Inscription</button>
 		</div>
-		<p>
-			Déjà membre? <a href="connexion.php">Se connecter</a>
-		</p>
+
 	</form>
-</body>
-</html>
+
 <?php $content = ob_get_clean(); ?>
-<?php require('../view/frontend/template.php'); ?>
+
+<?php require('../frontend/template.php'); ?>

@@ -52,26 +52,14 @@
 		// enregistrer l'utilisateur s'il n'y a pas d'erreur dans le formulaire
 		if (count($errors) == 0) {
 			$password = password_hash($password_1, PASSWORD_DEFAULT);//encrypt the password before saving in the database
-
-			if (isset($_POST['user_type'])) {
-				$user_type = e($_POST['user_type']);
-				$query = "INSERT INTO users (username, email, user_type, password) 
-						  VALUES('$username', '$email', '$user_type', '$password')";
+				$query = "INSERT INTO membres (pseudo, email, pass, date_inscription) 
+						  VALUES('$username', '$email', '$password', now())";
 				mysqli_query($db, $query);
-				$_SESSION['success']  = "Nouvel utilisateur créé avec succès!!";
-				header('location: home.php');
-			}else{
-				$query = "INSERT INTO users (username, email, user_type, password) 
-						  VALUES('$username', '$email', 'user', '$password')";
-				mysqli_query($db, $query);
-
-				// récupère l'identifiant de l'utilisateur créé
 				$logged_in_user_id = mysqli_insert_id($db);
 
 				$_SESSION['user'] = getUserById($logged_in_user_id); // mettre l'utilisateur connecté en session
 				$_SESSION['success']  = "Vous êtes maintenant connecté";
-				header('location: indexx.php');				
-			}
+				header('location: admin/home.php');				
 
 		}
 
@@ -80,11 +68,12 @@
 	// renvoyer un tableau d'utilisateurs à partir de leur identifiant
 	function getUserById($id){
 		global $db;
-		$query = "SELECT * FROM users WHERE id=" . $id;
+		$query = "SELECT * FROM membres WHERE id=" . $id;
 		$result = mysqli_query($db, $query);
 
 		$user = mysqli_fetch_assoc($result);
 		return $user;
+
 	}
 
 	// CONNEXION UTILISATEUR
@@ -107,13 +96,14 @@
 		if (count($errors) == 0) {
 			$password = password_hash($password, PASSWORD_DEFAULT);
 
-			$query = "SELECT * FROM users WHERE username='$username' AND password='$password' LIMIT 1";
+			$query = "SELECT * FROM membres WHERE pseudo='$username' AND pass='$password' LIMIT 1";
 			$results = mysqli_query($db, $query);
-
-			if (mysqli_num_rows($results) == 1) { // utilisateur trouvé
+            
+			if (mysqli_num_rows($results) == 0) { // utilisateur trouvé
 				// vérifier si l'utilisateur est admin ou utilisateur
 				$logged_in_user = mysqli_fetch_assoc($results);
-				if ($logged_in_user['user_type'] == 'admin') {
+				
+				if ($logged_in_user['user'] == 'username') {
 
 					$_SESSION['user'] = $logged_in_user;
 					$_SESSION['success']  = "Vous êtes maintenant connecté";
@@ -122,9 +112,10 @@
 					$_SESSION['user'] = $logged_in_user;
 					$_SESSION['success']  = "Vous êtes maintenant connecté";
 
-					header('location: indexx.php');
+					header('location: ./admin/home.php');
 				}
 			}else {
+
 				array_push($errors, "Mauvaise combinaison nom d'utilisateur / mot de passe");
 			}
 		}

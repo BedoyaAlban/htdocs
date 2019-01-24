@@ -20,19 +20,19 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../../public/css/base.css">
+    <link rel="stylesheet" href="../../public/css/vendor.css">
+    <link rel="stylesheet" href="../../public/css/main.css">
 
     <!-- script
     ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script src="js/pace.min.js"></script>
+    <script src="../../public/js/modernizr.js"></script>
+    <script src="../../public/js/pace.min.js"></script>
 
     <!-- favicons
     ================================================== -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../public/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../public/images/favicon.ico" type="image/x-icon">
 
 </head>
 
@@ -58,7 +58,7 @@
 
    <!-- home
    ================================================== -->
-   <section id="home" class="s-home page-hero target-section" data-parallax="scroll" data-image-src="images/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
+   <section id="home" class="s-home page-hero target-section" data-parallax="scroll" data-image-src="../../public/images/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
 
         <div class="overlay"></div>
         <div class="shadow-overlay"></div>
@@ -137,8 +137,8 @@
 
                         <div class="item-folio__thumb">
                             <a href="images/portfolio/gallery/g-beetle.jpg" class="thumb-link" title="The Beetle Car" data-size="1050x700">
-                                <img src="images/portfolio/beetle.jpg" 
-                                     srcset="images/portfolio/beetle.jpg 1x, images/portfolio/beetle@2x.jpg 2x" alt="">
+                                <img src="../../public/images/portfolio/beetle.jpg" 
+                                     srcset="../../public/images/portfolio/beetle.jpg 1x, ../../public/images/portfolio/beetle@2x.jpg 2x" alt="">
                                 <span class="shadow-overlay"></span>
                             </a>
                         </div>
@@ -167,9 +167,9 @@
                     <div class="item-folio">
 
                         <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-lighthouse.jpg" class="thumb-link" title="Lighthouse" data-size="1050x700">
-                                <img src="images/portfolio/lighthouse.jpg" 
-                                     srcset="images/portfolio/lighthouse.jpg 1x, images/portfolio/lighthouse@2x.jpg 2x" alt="">
+                            <a href="../../public/images/portfolio/gallery/g-lighthouse.jpg" class="thumb-link" title="Lighthouse" data-size="1050x700">
+                                <img src="../../public/images/portfolio/lighthouse.jpg" 
+                                     srcset="../../public/images/portfolio/lighthouse.jpg 1x, ../../public/images/portfolio/lighthouse@2x.jpg 2x" alt="">
                                 <span class="shadow-overlay"></span>
                             </a>
                         </div>
@@ -198,9 +198,9 @@
                     <div class="item-folio">
 
                         <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-salad.jpg" class="thumb-link" data-size="1050x700">
-                                <img src="images/portfolio/salad.jpg" 
-                                     srcset="images/portfolio/salad.jpg 1x, images/portfolio/salad@2x.jpg 2x" alt="">
+                            <a href="../../public/images/portfolio/gallery/g-salad.jpg" class="thumb-link" data-size="1050x700">
+                                <img src="../../public/images/portfolio/salad.jpg" 
+                                     srcset="../../public/images/portfolio/salad.jpg 1x, ../../public/images/portfolio/salad@2x.jpg 2x" alt="">
                                 <span class="shadow-overlay"></span>
                             </a>
                         </div>
@@ -229,9 +229,9 @@
                     <div class="item-folio">
 
                         <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-woodcraft.jpg" class="thumb-link" data-size="1050x700">
-                                <img src="images/portfolio/woodcraft.jpg"
-                                     srcset="images/portfolio/woodcraft.jpg 1x, images/portfolio/woodcraft@2x.jpg 2x" alt="">
+                            <a href="../../public/images/portfolio/gallery/g-woodcraft.jpg" class="thumb-link" data-size="1050x700">
+                                <img src="../../public/images/portfolio/woodcraft.jpg"
+                                     srcset="../../public/images/portfolio/woodcraft.jpg 1x, ../../public/images/portfolio/woodcraft@2x.jpg 2x" alt="">
                                 <span class="shadow-overlay"></span>
                             </a>
                         </div>
@@ -260,9 +260,9 @@
                     <div class="item-folio">
 
                         <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-skaterboy.jpg" class="thumb-link" data-size="1050x700">
-                                <img src="images/portfolio/skaterboy.jpg"
-                                     srcset="images/portfolio/skaterboy.jpg 1x, images/portfolio/skaterboy@2x.jpg 2x" alt="">
+                            <a href="../../public/images/portfolio/gallery/g-skaterboy.jpg" class="thumb-link" data-size="1050x700">
+                                <img src="../../public/images/portfolio/skaterboy.jpg"
+                                     srcset="../../public/images/portfolio/skaterboy.jpg 1x, ../../public/images/portfolio/skaterboy@2x.jpg 2x" alt="">
                                 <span class="shadow-overlay"></span>
                             </a>
                         </div>
@@ -291,9 +291,9 @@
                     <div class="item-folio">
 
                         <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-liberty.jpg" class="thumb-link" data-size="1050x700">
-                                <img src="images/portfolio/liberty.jpg"
-                                     srcset="images/portfolio/liberty.jpg 1x, images/portfolio/liberty@2x.jpg 2x" alt="">
+                            <a href="../../public/images/portfolio/gallery/g-liberty.jpg" class="thumb-link" data-size="1050x700">
+                                <img src="../../public/images/portfolio/liberty.jpg"
+                                     srcset="../../public/images/portfolio/liberty.jpg 1x, ../../public/images/portfolio/liberty@2x.jpg 2x" alt="">
                                 <span class="shadow-overlay"></span>
                             </a>
                         </div>
@@ -322,9 +322,9 @@
                     <div class="item-folio">
 
                         <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-minimalismo.jpg" class="thumb-link" data-size="1050x700">
-                                <img src="images/portfolio/minimalismo.jpg"
-                                     srcset="images/portfolio/minimalismo.jpg 1x, images/portfolio/minimalismo@2x.jpg 2x" alt="">
+                            <a href="../../public/images/portfolio/gallery/g-minimalismo.jpg" class="thumb-link" data-size="1050x700">
+                                <img src="../../public/images/portfolio/minimalismo.jpg"
+                                     srcset="../../public/images/portfolio/minimalismo.jpg 1x, ../../public/images/portfolio/minimalismo@2x.jpg 2x" alt="">
                                 <span class="shadow-overlay"></span>
                             </a>
                         </div>
@@ -353,9 +353,9 @@
                     <div class="item-folio">
 
                         <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-shutterbug.jpg" class="thumb-link" data-size="1050x700">
-                                <img src="images/portfolio/shutterbug.jpg"
-                                     srcset="images/portfolio/shutterbug.jpg 1x, images/portfolio/shutterbug@2x.jpg 2x" alt="">
+                            <a href="../../public/images/portfolio/gallery/g-shutterbug.jpg" class="thumb-link" data-size="1050x700">
+                                <img src="../../public/images/portfolio/shutterbug.jpg"
+                                     srcset="../../public/images/portfolio/shutterbug.jpg 1x, ../../public/images/portfolio/shutterbug@2x.jpg 2x" alt="">
                                 <span class="shadow-overlay"></span>
                             </a>
                         </div>
@@ -489,7 +489,7 @@
                 </p>
 
                 <div class="cta__action">
-                    <a class="btn btn--primary btn--large" href="connexion.php">Sign Up Now</a>
+                    <a class="btn btn--primary btn--large" href="../../view/connexionView.php">Sign Up Now</a>
                 </div>	
 
             </div>
@@ -587,7 +587,7 @@
             <div class="col-full">
 
                 <div class="footer-logo">
-                    <a class="footer-site-logo" href="#0"><img src="images/logo.png" alt="Homepage"></a>
+                    <a class="footer-site-logo" href="#0"><img src="../../public/images/logo.png" alt="Homepage"></a>
                 </div>
 
                 <ul class="footer-social">
@@ -680,9 +680,9 @@
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../../public/js/jquery-3.2.1.min.js"></script>
+    <script src="../../public/js/plugins.js"></script>
+    <script src="../../public/js/main.js"></script>
 
 </body>
 
