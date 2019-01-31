@@ -3124,6 +3124,10 @@ html.no-csstransitions .home-content__main {
 .contact__form {
     padding-right: 40px;
 }
+#contact__inscription {
+    width: 20% !important;
+    margin: auto !important;
+}
 
 .contact__form input[type="email"], 
 .contact__form input[type="number"], 
