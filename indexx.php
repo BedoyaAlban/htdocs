@@ -1,7 +1,7 @@
 <?php
 require('controller/frontend.php');
 require('controller/backend.php');
-try {
+/*try {
     if (isset($_POST['register_btn']))
     {
         if (empty($_POST['pseudo'])) {
@@ -14,7 +14,7 @@ try {
             throw new Exception("Le mot de passe est nécessaire");
         }
         if ($_POST['password_1'] != $_POST['password_2']) {
-            throw new Exception("les deux mots de passe ne correspondent pas")
+            throw new Exception("les deux mots de passe ne correspondent pas");
         }
         else {
             $password_hashe = password_hash($_POST['password_1'], PASSWORD_DEFAULT);
@@ -25,9 +25,9 @@ try {
     if (isset($_POST['login_btn'])) {
         if (empty($_POST['pseudo'])){
             throw new Exception("Nom d'utilisateur est nécessaire");
-            elseif (empty($_POST['password'])){
+        }
+        if (empty($_POST['password'])){
                 throw new Exception("Mot de passe requis");
-            }
         }
         else {
             $password_hashe = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -36,6 +36,9 @@ try {
         }
     }
 }
+catch(Exception $e) {
+    echo 'Erreur : ' . $e->getMessage();
+}*/
 try {
     if (isset($_GET['action'])) {
     
@@ -70,6 +73,11 @@ try {
                     throw new Exception('Aucun identifiant de billet envoyé');
                 }
                 break;
+            case 'registerAdmin':
+                        addAdmin($_POST['pseudo'], $_POST['email'], $_POST['password_1']);
+                break;
+            case 'login_btn':
+                        getAdmin($_POST['pseudo']);
             default:
                listPosts();
                 break;
