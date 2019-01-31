@@ -3,11 +3,11 @@
 <?php ob_start(); ?>
 <div class="row narrow section-intro has-bottom-sep">
     <div class="col-full">
-		<h3>Mon super blog !</h3>
+		<h1>Mon super blog !</h1>
 		<h1><a href="indexx.php">Retour à la liste des billets</a></h1>
     </div>
 </div>
-<h2>Commentaire</h2>
+<h1>Commentaire</h1>
 <div class="com">
     <h3>
         <p>Auteur : <em><?= htmlspecialchars($com['author']) ?></em></p><br />

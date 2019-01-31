@@ -1,4 +1,3 @@
-<?php $title = htmlspecialchars($post['title']); ?>
 
 <?php ob_start(); ?>
 <div class="row narrow section-intro has-bottom-sep">
@@ -9,7 +8,7 @@
 </div>
 
 <article class="col-block">
-    <h2 class="h01"><a href="blog-single.html"><?= htmlspecialchars($post['title']) ?></a></h2>
+    <h1 class="h01"><a href="blog-single.html"><?= htmlspecialchars($post['title']) ?></a></h1>
     <div class="blog-date">
         <a href="blog-single.html"><?= $data['creation_date_fr'] ?></a>
     </div>
@@ -20,7 +19,7 @@
 
 <div class="row narrow section-intro has-bottom-sep">
     <div class="col-full">
-    <h2>Commentaires</h2>
+    <h1>Commentaires</h1>
         <form action="indexx.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
             <div class="col-full">
                 <label for="author"><h4 class="h06">Auteur</h4></label><br />

@@ -23,7 +23,7 @@
                             <a href="blog-single.html"><?= $data['creation_date_fr'] ?></a>
                         </div>  
                         
-                        <h2 class="h01"><a href="blog-single.html"><?= htmlspecialchars($data['title']) ?></a></h2>
+                        <h1 class="h01"><a href="blog-single.html"><?= htmlspecialchars($data['title']) ?></a></h1>
                         <p class="lead">
                         <?= nl2br(htmlspecialchars($data['content'])) ?>
                         </p>
