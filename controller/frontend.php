@@ -9,7 +9,7 @@ function listPosts()
     $postManager = new \Tp\Blog\Model\PostManager();
     $posts = $postManager->getPosts();
 
-    require('../view/frontend/listPostsView.php');
+    require('view/frontend/listPostsView.php');
 }
 
 function post()
@@ -20,7 +20,7 @@ function post()
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
 
-    require('../view/frontend/postView.php');
+    require('view/frontend/postView.php');
 }
 
 function addComment($postId, $author, $comment)
@@ -43,7 +43,7 @@ function comment()
 
     $com = $commentManager->getComment($_GET['id']);
     
-    require('../view/frontend/commentView.php');
+    require('view/frontend/commentView.php');
 }
 
 function addCommentEdit($id, $author, $comment)

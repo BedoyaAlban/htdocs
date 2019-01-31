@@ -3,20 +3,38 @@
 // Chargement des classes
 require_once('model/RegisterManager.php');
 
-function registerAdmin($pseudo, $pass)
+function addAdmin($pseudo, $email, $pass_hashe) 
 {
-	$addAdmin = new \Tp\Blog\Model\addAdmin();
+	$registerManager = new \Tp\Blog\Model\RegisterManager();
 
-	$dataAdmin = $addAdmin->addAdmin($pseudo, $pass);
+	$pass_hashe = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
-    require('../view/backend/registerView.php');
+	$dataAdmin = $registerManager->addAdmin($pseudo, $email, $pass_hashe);
+
+	require('view/backend/connexionView.php');
 }
-
-function login()
+function getAdmin($pseudo)
 {
-	$getAdmin = new \Tp\Blog\Model\getAdmin();
+	$registerManager = new \TP\Blog\Model\RegisterManager();
+	$result = $registerManager->getAdmin($pseudo);
+	
+	$isPasswordCorrect = password_verify($_POST['password'], $result['pass']);
+	if (!$result)
+	{
+	    throw new Exception('Mauvais identifiant ou mot de passe !');
+	}
+	else
+	{
+	    if ($isPasswordCorrect) {
+	        session_start();
+	        $_SESSION['id'] = $resultat['id'];
+	        $_SESSION['pseudo'] = $pseudo;
+	        echo 'Vous êtes connecté !';
 
-	$gadmin = $getAdmin->getAdmin($_GET['id']);
-
-	require('../view/backend/adminView.php');
+	        require('view/backend/adminView.php');
+	    }
+	    else {
+	        throw new Exception('Mauvais identifiant ou mot de passe !');
+	    }
+	}
 }
