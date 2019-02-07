@@ -392,6 +392,10 @@ input[type="password"], textarea {
     float: left;
 }
 
+[class*="cols"] {
+    float: left;
+}
+
 [class*="col-"] + [class*="col-"].end {
     float: right;
 }
