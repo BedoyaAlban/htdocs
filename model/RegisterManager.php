@@ -21,4 +21,21 @@ class RegisterManager extends Manager
 
         return $result;
     }
+    public function getPostsAdmin()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 5');
+
+        return $req;
+    }
+
+    public function verifyPseudo($pseudo) 
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT pseudo FROM membres WHERE pseudo = :pseudo');
+        $req->execute(array('pseudo' => $pseudo));
+        $found = $req->fetch();
+
+        return $found;
+    }
 }
