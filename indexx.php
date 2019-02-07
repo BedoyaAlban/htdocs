@@ -78,6 +78,7 @@ try {
                 break;
             case 'login_btn':
                         getAdmin($_POST['pseudo']);
+                break;
             default:
                listPosts();
                 break;
@@ -85,6 +86,9 @@ try {
     }
     else {
         listPosts();
+    }
+    if (isset($_SESSION)) {
+        /* */
     }
 }
 catch(Exception $e) {
