@@ -3,31 +3,31 @@
 // Chargement des classes
 require_once('model/RegisterManager.php');
 
-function addAdmin($pseudo, $email, $pass_hashe) 
+function addAdmin($pseudo, $email, $password_1, $password_2) 
 {
 	$registerManager = new \Tp\Blog\Model\RegisterManager();
     
-    $pseudoV = trim($pseudo);
+    $pseudo = trim($pseudo); 
     
-    $found = $registerManager->verifyPseudo($pseudo);
+    $found = $registerManager->verifyPseudo($pseudo); /* if (trim($pseudo) != "" ) */
   
     if ($found != 0) {
     	throw new Exception('Pseudo déjà utilisé!');
 
     }
-	if ($_POST['password_1'] != $_POST['password_2']) {
+	if ( $password_1 != $password_2) {
     	throw new Exception('Les deux mots de passe ne correspondent pas!');
     }
-	if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email']))
+	if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $email))
     {
-        $pass_hashe = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+        $pass_hashe = password_hash($password_1, PASSWORD_DEFAULT);
     
-		$dataAdmin = $registerManager->addAdmin($pseudo, $email, $pass_hashe);
+		$dataAdmin = $registerManager->addAdmin(trim($pseudo), trim($email), trim($pass_hashe));
 
 		require('view/backend/connexionView.php');
     } else
     {
-        throw new Exception('L\'adresse ' . $_POST['email'] . ' n\'est pas valide, recommencez !');
+        throw new Exception('L\'adresse ' . $email . ' n\'est pas valide, recommencez !');
 	   
 	}
 }
@@ -48,8 +48,6 @@ function getAdmin($pseudo)
 	        session_start();
 	        $posts = $registerManager->getPostsAdmin();
 	        $_SESSION['id'] = $result['id'];
-	        var_dump($_SESSION['id']);
-	        die();
 	        $_SESSION['pseudo'] = $pseudo;
 	        echo 'Vous êtes connecté !';
 

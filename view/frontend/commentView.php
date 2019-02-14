@@ -1,5 +1,3 @@
-<?php $title = 'Mon blog'; ?>
-
 <?php ob_start(); ?>
 <div class="row narrow section-intro has-bottom-sep">
     <div class="col-full">

@@ -74,11 +74,15 @@ try {
                 }
                 break;
             case 'registerAdmin':
-                        addAdmin($_POST['pseudo'], $_POST['email'], $_POST['password_1']);
+                if (isset($_SESSION) && ($_SESSION['id'] > 0)) {
+                    addAdmin($_POST['pseudo'], $_POST['email'], $_POST['password_1'], $_POST['password_2']);
+                }
                 break;
-            case 'login_btn':
+            case 'login_btn':                   
                         getAdmin($_POST['pseudo']);
                 break;
+            case 'createA':
+                  createAdmin();
             default:
                listPosts();
                 break;
@@ -86,9 +90,6 @@ try {
     }
     else {
         listPosts();
-    }
-    if (isset($_SESSION)) {
-        /* */
     }
 }
 catch(Exception $e) {
