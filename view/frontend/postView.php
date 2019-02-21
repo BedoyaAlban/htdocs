@@ -3,10 +3,9 @@
 <div class="row narrow section-intro has-bottom-sep">
     <div class="col-full">
         <h3>Mon super blog !</h3>
-        <h1><a href="indexx.php">Retour à la liste des billets</a></h1>
+        <h1><a href="indexx.php?action=listPosts">Retour à la liste des billets</a></h1>
     </div>
 </div>
-
 <article class="col-block">
     <h1 class="h01"><a href="blog-single.html"><?= htmlspecialchars($post['title']) ?></a></h1>
     <div class="blog-date">
@@ -16,7 +15,6 @@
         <?= nl2br(htmlspecialchars($post['content'])) ?>
     </p>
 </article>
-
 <div class="row narrow section-intro has-bottom-sep">
     <div class="col-full">
     <h1>Commentaires</h1>

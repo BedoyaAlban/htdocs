@@ -2,7 +2,7 @@
 <div class="row narrow section-intro has-bottom-sep">
     <div class="col-full">
 		<h1>Mon super blog !</h1>
-		<h1><a href="indexx.php">Retour à la liste des billets</a></h1>
+		<h1><a href="indexx.php?action=listPosts">Retour à la liste des billets</a></h1>
     </div>
 </div>
 <h1>Commentaire</h1>
