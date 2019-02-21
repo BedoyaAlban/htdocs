@@ -74,15 +74,29 @@ try {
                 }
                 break;
             case 'registerAdmin':
-                if (isset($_SESSION) && ($_SESSION['id'] > 0)) {
+                if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
                     addAdmin($_POST['pseudo'], $_POST['email'], $_POST['password_1'], $_POST['password_2']);
                 }
                 break;
             case 'login_btn':                   
                         getAdmin($_POST['pseudo']);
                 break;
-            case 'createA':
-                  createAdmin();
+            case 'Edit':
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    postAdmin();
+                }
+                break;
+            case 'Create':
+                    newPostAdmin($_POST['postTitle'], $_POST['newPost']);
+                break;
+            case 'Modify':
+                    postEditAdmin($_GET['id'], $_POST['editPostTitle'], $_POST['editPost']);
+                break;
+            case 'Delete':
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    deletePostAdmin();
+                }
+                break;    
             default:
                listPosts();
                 break;
