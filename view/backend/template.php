@@ -27,9 +27,9 @@
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
 
     <!-- TinyMCE
-    ================================================== 
+    ================================================== -->
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=9ybes16a7zeyi6rct2bacjeq9m9ooph3k4tdch9fyclr9l96"></script>
-    <script>tinymce.init({ selector:'textarea' });</script> -->
+    <script>tinymce.init({ selector:'textarea', plugins: 'image media link tinydrive imagetools', toolbar: 'insertfile image link ' });</script> 
 
     <!-- script
     ================================================== -->
