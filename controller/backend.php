@@ -62,3 +62,38 @@ function getAdmin($pseudo)
 	    }
 	}
 }
+
+function newPostAdmin($title, $content)
+{
+	$registerManager = new \Tp\Blog\Model\RegisterManager();
+
+	$newPost = $registerManager->addNewPost($title, $content);
+
+	header('Location: indexx.php?action=listPosts');
+}
+
+function postAdmin()
+{
+    $registerManager = new \Tp\Blog\Model\RegisterManager();
+
+    $post = $registerManager->getPostAdmin($_GET['id']);
+
+    require('view/backend/editPostView.php');
+}
+
+function deletePostAdmin()
+{
+	$registerManager = new \Tp\Blog\Model\RegisterManager();
+
+	$req = $registerManager->deletePost($_GET['id']);
+
+	header('Location: indexx.php?action=listPosts');
+}
+
+function postEditAdmin($id, $title, $content)
+{
+	$registerManager = new \Tp\Blog\Model\RegisterManager();
+
+	$postEdit = $registerManager->editPost($title, $content, $id);
+
+}
