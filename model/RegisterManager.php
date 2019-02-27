@@ -26,9 +26,19 @@ class RegisterManager extends Manager
     public function getPostsAdmin()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date LIMIT 0, 5');
+        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date LIMIT 0, 10');
+        $req->execute();
 
         return $req;
+    }
+
+    public function getCommentsAdmin()
+    {
+        $db = $this->dbConnect();
+        $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments ORDER BY comment_date DESC');
+        $comments->execute();
+
+        return $comments;
     }
 
     public function verifyPseudo($pseudo) 
@@ -61,7 +71,11 @@ class RegisterManager extends Manager
     public function deletePost($id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('DELETE FROM posts WHERE id = ?');
+        $req = $db->prepare('DELETE FROM posts WHERE id = :id');
+        $del = $req->execute(array('id' => $id));
+
+        return $del;
+
     }
 
     public function editPost($title, $content, $id)
