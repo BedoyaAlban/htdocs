@@ -3,6 +3,11 @@
 // Chargement des classes
 require_once('model/RegisterManager.php');
 
+function addAdminView() 
+{
+	require('view/backend/registerView.php');
+}
+
 function addAdmin($pseudo, $email, $password_1, $password_2) 
 {
 	$registerManager = new \Tp\Blog\Model\RegisterManager();
@@ -36,7 +41,7 @@ function getAdmin($pseudo)
 {
 	$registerManager = new \TP\Blog\Model\RegisterManager();
 	$result = $registerManager->getAdmin($pseudo);
-	
+
 	$isPasswordCorrect = password_verify($_POST['password'], $result['pass']);
 	if (!$result)
 	{
@@ -49,18 +54,41 @@ function getAdmin($pseudo)
 	        $posts = $registerManager->getPostsAdmin();
 	        $_SESSION['id'] = $result['id'];
 	        $_SESSION['pseudo'] = $pseudo;
-	        echo 'Vous êtes connecté !';
 
-	        require('view/backend/adminView.php');
+	        require 'view/backend/adminView.php';
 	    }
 	    else {
 	        throw new Exception('Mauvais identifiant ou mot de passe !'); 
-	         /* ToDo : - message à changer 
-	         - changer la vue admin créer un template à la place
-	         - si problème fctn addadmin renvoyer à la vue de connexion 
-	         - s'inspirer de wordpress pour la fonctionnalité admin  créer les mockups des vues admin avant le reste */
 	    }
 	}
+}
+
+function connexionView()
+{
+	require('view/backend/connexionView.php');
+}
+
+function adminView()
+{
+	$registerManager = new \TP\Blog\Model\RegisterManager();
+	$posts = $registerManager->getPostsAdmin();
+	require 'view/backend/adminView.php';
+}
+
+function deconnexion()
+{
+	session_start();
+
+	unset($_SESSION['id']);
+
+	session_destroy();
+
+	require('view/backend/connexionView.php');
+}
+
+function viewCreate()
+{
+	require 'view/backend/addPostView.php';
 }
 
 function newPostAdmin($title, $content)
@@ -69,7 +97,7 @@ function newPostAdmin($title, $content)
 
 	$newPost = $registerManager->addNewPost($title, $content);
 
-	header('Location: indexx.php?action=listPosts');
+	header('Location: indexx.php?action=adminView');
 }
 
 function postAdmin()
@@ -87,7 +115,7 @@ function deletePostAdmin()
 
 	$req = $registerManager->deletePost($_GET['id']);
 
-	header('Location: indexx.php?action=listPosts');
+	header('Location: indexx.php?action=adminView');
 }
 
 function postEditAdmin($id, $title, $content)
@@ -96,4 +124,24 @@ function postEditAdmin($id, $title, $content)
 
 	$postEdit = $registerManager->editPost($title, $content, $id);
 
+	header('Location: indexx.php?action=Edit&id='.$id);
+
+}
+
+function postAdminView() 
+{
+	$registerManager = new \Tp\Blog\Model\RegisterManager();
+
+    $post = $registerManager->getPostAdmin($_GET['id']);
+
+    require('view/backend/postAdminView.php');
+}
+
+function commentsAdminView()
+{
+	$registerManager = new \Tp\Blog\Model\RegisterManager();
+
+	$comments = $registerManager->getCommentsAdmin();
+
+	require('view/backend/commentsAdminView.php');
 }
