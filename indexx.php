@@ -1,44 +1,9 @@
 <?php
+session_start();
+
 require('controller/frontend.php');
 require('controller/backend.php');
-/*try {
-    if (isset($_POST['register_btn']))
-    {
-        if (empty($_POST['pseudo'])) {
-            throw new Exception("Nom d'utilisateur est nécessaire");
-        }
-        if (empty($_POST['email'])) {
-            throw new Exception("Email est nécessaire");
-        }
-        if (empty($_POST['password_1'])) {
-            throw new Exception("Le mot de passe est nécessaire");
-        }
-        if ($_POST['password_1'] != $_POST['password_2']) {
-            throw new Exception("les deux mots de passe ne correspondent pas");
-        }
-        else {
-            $password_hashe = password_hash($_POST['password_1'], PASSWORD_DEFAULT);
 
-            registerAdmin($_POST['pseudo'], $password_hashe);
-        }
-    }
-    if (isset($_POST['login_btn'])) {
-        if (empty($_POST['pseudo'])){
-            throw new Exception("Nom d'utilisateur est nécessaire");
-        }
-        if (empty($_POST['password'])){
-                throw new Exception("Mot de passe requis");
-        }
-        else {
-            $password_hashe = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-            login();
-        }
-    }
-}
-catch(Exception $e) {
-    echo 'Erreur : ' . $e->getMessage();
-}*/
 try {
     if (isset($_GET['action'])) {
     
@@ -78,23 +43,64 @@ try {
                     addAdmin($_POST['pseudo'], $_POST['email'], $_POST['password_1'], $_POST['password_2']);
                 }
                 break;
-            case 'login_btn':                   
-                        getAdmin($_POST['pseudo']);
+            case 'addAdminView':
+                if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
+                    addAdminView();
+                }
+                break;
+            case 'adminView': 
+                if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
+                    adminView();   
+                }
                 break;
             case 'Edit':
+                if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
-                    postAdmin();
+                        postAdmin();
+                    }
+                }
+                break;
+            case 'login':
+                getAdmin($_POST['pseudo']);
+                break;
+            case 'connexion':
+                connexionView();
+                break;
+            case 'deconnexion':
+                if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
+                    deconnexion();
+                }
+                break;
+            case 'postAdminView':
+                if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
+                    postAdminView();
+                }
+                break;
+            case 'viewCommentsAdmin':
+                if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
+                    commentsAdminView();
+                }
+                break;
+            case 'View':
+                if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
+                    viewCreate();
                 }
                 break;
             case 'Create':
+                if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) { 
                     newPostAdmin($_POST['postTitle'], $_POST['newPost']);
+                }
                 break;
             case 'Modify':
+                if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {    
                     postEditAdmin($_GET['id'], $_POST['editPostTitle'], $_POST['editPost']);
+                }
                 break;
             case 'Delete':
+                if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
-                    deletePostAdmin();
+                        deletePostAdmin();
+                    }
                 }
                 break;    
             default:
