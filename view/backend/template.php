@@ -45,89 +45,40 @@
 
 </head>
 
-<body id="top">
-
-    <!-- header
+<body id="top" class=" pace-done">
+     <!-- header
     ================================================== -->
     <header class="s-header">
+        
+        <nav class="header-nav-wrap">
+            <ul class="header-nav">
+                <li><a href="../../indexx.php?action=adminView" class="admin" >Home</a></li>
+                <li><a href="../../indexx.php?action=View" class="admin" >Create</a></li>
+                <li><a href="../../indexx.php?action=viewCommentsAdmin" class="admin" >Moderate</a></li>
+            </ul>
+        </nav>
 
-        <div class="header-logo">
-            <a class="site-logo" href="../../indexx.php"><img src="../../public/images/logo.png" alt="Homepage"></a>
-        </div>
+        <nav class="header-nav-wrapleft">
+            <ul class="header-navleft">
+                <li><a href="../../indexx.php?action=connexion" class="admin" >Connexion</a></li>
+                <li><a href="../../indexx.php?action=deconnexion" class="admin" >Déconnexion</a></li>
+            </ul>
+        </nav>
+
+        <a class="header-menu-toggle" href="#0"><span>Menu</span></a>
 
     </header> <!-- end s-header -->
-
-
-   <!-- home
-   ================================================== -->
-   <section id="home" class="s-home page-hero target-section" data-parallax="scroll" data-image-src="../../public/images/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
-
-        <div class="overlay"></div>
-        <div class="shadow-overlay"></div>
-
-        <div class="home-content">
-
-            <div class="row home-content__main">
-
-                <h3>Hello There</h3>
-
-                <h1>
-                    I am Jonathan Doe. <br>
-                    I am a graphic & UI/UX <br>
-                    designer based in Somewhere.
-                </h1>
-
-                <div class="home-content__buttons">
-                    <a href="#works" class="smoothscroll btn btn--stroke">
-                        Latest Projects
-                    </a>
-                    <a href="#about" class="smoothscroll btn btn--stroke">
-                        More About Me
-                    </a>
-                </div>
-
-                <div class="home-content__scroll">
-                    <a href="#about" class="scroll-link smoothscroll">
-                        <span>Scroll Down</span>
-                    </a>
-                </div>
-
+    <!-- end s-home -->
+    <section id="home" class="page-hero target-section"></section>
+    <section id="works" class="target-section"></section>
+    <section id="blog" class="s-blogadmin target-section">
+            <div class="photo-container">
+              <img src="../../now-ui-kit-html-v1.2.0/assets/img/ryan.jpg" alt="">
             </div>
-
-        </div> <!-- end home-content -->
-
-        <ul class="home-social">
-            <li>
-                <a href="#"><i class="im im-facebook" aria-hidden="true"></i><span>Facebook</span></a>
-            </li>
-            <li>
-                <a href="#"><i class="im im-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
-            </li>
-            <li>
-                <a href="#"><i class="im im-instagram" aria-hidden="true"></i><span>Instagram</span></a>
-            </li>
-            <li>
-                <a href="#"><i class="im im-behance" aria-hidden="true"></i><span>Behance</span></a>
-            </li>
-            <li>
-                <a href="#"><i class="im im-pinterest" aria-hidden="true"></i><span>Pinterest</span></a>
-            </li>
-        </ul> 
-        <!-- end home-social -->
-
-    </section> <!-- end s-home -->
-
-    <section id="blog" class="s-blogs target-section">
-        <div class="photo-container">
-          <img src="../../now-ui-kit-html-v1.2.0/assets/img/ryan.jpg" alt="">
-        </div>
-        <h3 class="title">Jean Forteroche</h3>
-        <p class="category">Writer&Blogger</p>
-      </div>
+            <h3 class="title admin">Vous êtes connecté : <?= $_SESSION['pseudo'] ?></h3> 
+            <p class="category admin">Writer&Blogger</p>
+            <?= $content ?>
     </section>
-    
-    
-        <?= $content ?>
     
     <!-- footer
     ================================================== -->

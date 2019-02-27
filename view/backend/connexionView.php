@@ -1,25 +1,34 @@
+<?php session_start(); ?>
 <?php ob_start(); ?>
-<section id="blog" class="s-blog target-section">
-	<div id="contact__inscription">
-		<div class="header">
-				<h2>Connexion</h2>
-			</div>
-			
-		<form method="post" action="../../indexx.php?action=login_btn">
-
-			<div class="input-group">
-				<label>Pseudo</label>
-				<input type="text" name="pseudo" >
-			</div>
-			<div class="input-group">
-				<label>Mot de passe</label>
-				<input type="password" name="password">
-			</div>
-			<div class="input-group">
-				<button type="submit" class="btn" name="login_btn">Connexion</button>
-			</div>
-		</form>
-	</div>
-</section>
+<div class="center admin-view">
+    <div class="card card-signup" data-background-color="orange">
+        <form method="post" action="../../indexx.php?action=login">
+            <div class="card-header text-center">
+                <h3 class="card-title title-up admin">Sign Up</h3>
+            </div>
+            <div class="card-body">
+                <div class="input-group no-border">
+                    <div class="input-group-prepend">
+                    	<span class="input-group-text">
+                        	<i class="im im-user-settings"></i>
+                    	</span>
+                    </div>
+                    <input type="text" name="pseudo" class="form-control" placeholder="Pseudo...">
+                </div>
+                <div class="input-group no-border">
+                    <div class="input-group-prepend">
+                    	<span class="input-group-text">
+                        	<i class="im im-key"></i>
+                    	</span>
+                    </div>
+                    <input type="password" name="password" placeholder="Mot de passe..." class="form-control">
+                </div>
+                <div class="card-footer text-center">
+                	<button type="submit" class="btn--primary-admin" name="login">Connexion</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php'); ?>
