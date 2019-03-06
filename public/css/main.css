@@ -718,6 +718,12 @@ form,
     margin-bottom: 3rem;
 }
 
+div.center.admin p {
+    background-color: rgba(21, 2, 2, 0.6);
+    max-width: 800px;
+    margin: auto;
+}
+
 i.im.im-user-settings, i.im.im-key, i.im.im-mail {
     padding-top: 7px;
 }
@@ -3246,7 +3252,15 @@ h3.title.admin{
  * # blog - (_site-layout.scss)
  *
  * ------------------------------------------------------------------- */
-
+div.centers {
+    /*background-image: url('../../public/assets/img/alaska.png');
+    background-image: url('../../public/assets/img/Alaska-1.png');*/
+    background-image: url('../../public/assets/img/Alaska-2.jpg');
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    background-position: top center;
+}
 .s-blog {
     padding-top: 15rem;
     padding-bottom: 9.6rem;
