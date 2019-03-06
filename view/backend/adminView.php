@@ -1,8 +1,13 @@
 <?php session_start(); ?>
 <?php ob_start(); ?>
+<div class="photo-container">
+    <img src="../../now-ui-kit-html-v1.2.0/assets/img/ryan.jpg" alt="">
+</div>
+<h3 class="title admin">Vous êtes connecté : <?= $_SESSION['pseudo'] ?></h3> 
+<p class="category admin">Writer&Blogger</p>
     <div class="center">
-        <a href="../../indexx.php?action=View" class="btn btn--primary">Créer un Article </a>
-        <a href="../../indexx.php?action=addAdminView" class="btn btn--primary">Créer un Admin</a> 
+        <a href="../../index.php?action=View" class="btn btn--primary">Créer un Article </a>
+        <a href="../../index.php?action=addAdminView" class="btn btn--primary">Créer un Admin</a> 
     </div> 
     <div class="row narrow section-intro has-bottom-sep">
         <div class="col-full admin">
@@ -44,7 +49,7 @@
                                     <td> <?= $value['creation_date_fr']?></td>
                                     <td>
                                         <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                            <a href="indexx.php?action=Edit&amp;id=<?= $value['id'] ?>">
+                                            <a href="index.php?action=Edit&amp;id=<?= $value['id'] ?>">
                                                 <button class="btn btn-icon btn-xs edit" data-title="Edit" data-toggle="modal" data-target="#edit" >
                                                     <i class="im im-edit" aria-hidden="true"></i>
                                                 </button>
@@ -53,7 +58,7 @@
                                     </td>
                                     <td>
                                         <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                            <a href="indexx.php?action=Delete&amp;id=<?= $value['id'] ?>">
+                                            <a href="index.php?action=Delete&amp;id=<?= $value['id'] ?>">
                                                 <button class="btn btn-icon btn-xs delete" data-title="Delete" data-toggle="modal" data-target="#delete" >
                                                     <i class="im im-x-mark-circle" aria-hidden="true"></i>
                                                 </button>
@@ -62,7 +67,7 @@
                                     </td>
                                     <td>
                                         <p data-placement="top" data-toggle="tooltip" title="View">
-                                            <a href="indexx.php?action=postAdminView&amp;id=<?= $value['id'] ?>">
+                                            <a href="index.php?action=postAdminView&amp;id=<?= $value['id'] ?>">
                                                 <button  class="btn btn-icon btn-xs view" data-title="View" data-toggle="modal" data-target="#view" >
                                                     <i class="im im-eye" aria-hidden="true"></i>
                                                 </button>

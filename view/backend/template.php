@@ -52,16 +52,16 @@
         
         <nav class="header-nav-wrap">
             <ul class="header-nav">
-                <li><a href="../../indexx.php?action=adminView" class="admin" >Home</a></li>
-                <li><a href="../../indexx.php?action=View" class="admin" >Create</a></li>
-                <li><a href="../../indexx.php?action=viewCommentsAdmin" class="admin" >Moderate</a></li>
+                <li><a href="../../index.php?action=adminView" class="admin" >Home</a></li>
+                <li><a href="../../index.php?action=View" class="admin" >Create</a></li>
+                <li><a href="../../index.php?action=viewCommentsAdmin" class="admin" >Moderate</a></li>
             </ul>
         </nav>
 
         <nav class="header-nav-wrapleft">
             <ul class="header-navleft">
-                <li><a href="../../indexx.php?action=connexion" class="admin" >Connexion</a></li>
-                <li><a href="../../indexx.php?action=deconnexion" class="admin" >Déconnexion</a></li>
+                <li><a href="../../index.php?action=connexion" class="admin" >Connexion</a></li>
+                <li><a href="../../index.php?action=deconnexion" class="admin" >Déconnexion</a></li>
             </ul>
         </nav>
 
@@ -72,11 +72,6 @@
     <section id="home" class="page-hero target-section"></section>
     <section id="works" class="target-section"></section>
     <section id="blog" class="s-blogadmin target-section">
-            <div class="photo-container">
-              <img src="../../now-ui-kit-html-v1.2.0/assets/img/ryan.jpg" alt="">
-            </div>
-            <h3 class="title admin">Vous êtes connecté : <?= $_SESSION['pseudo'] ?></h3> 
-            <p class="category admin">Writer&Blogger</p>
             <?= $content ?>
     </section>
     

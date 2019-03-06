@@ -40,7 +40,7 @@
                                     <td> <?= $value['comment']?></td>
                                     <td>
                                         <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                            <a href="indexx.php?action=Edit&amp;id=<?= $value['id'] ?>">
+                                            <a href="index.php?action=Edit&amp;id=<?= $value['id'] ?>">
                                                 <button class="btn btn-icon btn-xs edit" data-title="Edit" data-toggle="modal" data-target="#edit" >
                                                     <i class="im im-edit" aria-hidden="true"></i>
                                                 </button>

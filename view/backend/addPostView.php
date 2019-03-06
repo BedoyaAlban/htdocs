@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <?php ob_start(); ?>
 <div class="center">
-	<form method="post" action="../../indexx.php?action=Create">
+	<form method="post" action="../../index.php?action=Create">
 		    <label class="formCreate admin" >Titre de l'article</label>
 			<input type="text" class="postTitle" name="postTitle" placeholder="Titre de l'article"></input>
 			<label class="formCreate admin">Nouvel Article</label>

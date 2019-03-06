@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 <div class="center">
   <div class="card card-signup" data-background-color="orange">
-    <form class="form" action="../../indexx.php?action=registerAdmin" method="post">
+    <form class="form" action="../../index.php?action=registerAdmin" method="post">
       <div class="card-header text-center">
         <h3 class="card-title title-up admin">Créer un nouvel Admin</h3>
       </div>

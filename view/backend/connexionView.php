@@ -2,7 +2,7 @@
 <?php ob_start(); ?>
 <div class="center admin-view">
     <div class="card card-signup" data-background-color="orange">
-        <form method="post" action="../../indexx.php?action=login">
+        <form method="post" action="../../index.php?action=login">
             <div class="card-header text-center">
                 <h3 class="card-title title-up admin">Sign Up</h3>
             </div>
