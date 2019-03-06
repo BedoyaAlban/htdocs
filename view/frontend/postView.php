@@ -3,7 +3,7 @@
 <div class="row narrow section-intro has-bottom-sep">
     <div class="col-full">
         <h3>Mon super blog !</h3>
-        <h1><a href="indexx.php?action=listPosts">Retour à la liste des billets</a></h1>
+        <h1><a href="index.php?action=listPosts">Retour à la liste des billets</a></h1>
     </div>
 </div>
 <article class="col-block">
@@ -18,7 +18,7 @@
 <div class="row narrow section-intro has-bottom-sep">
     <div class="col-full">
     <h1>Commentaires</h1>
-        <form action="indexx.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+        <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
             <div class="col-full">
                 <label for="author"><h4 class="h06">Auteur</h4></label><br />
                 <input type="text" id="author" name="author" />
