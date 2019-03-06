@@ -33,7 +33,7 @@ function addComment($postId, $author, $comment)
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
     else {
-        header('Location: indexx.php?action=post&id=' . $postId);
+        header('Location: index.php?action=post&id=' . $postId);
     }
 }
 
@@ -58,6 +58,6 @@ function addCommentEdit($id, $author, $comment)
     }
     else
     {
-        header('Location: indexx.php?action=post&id=' . $_GET['postid']);
+        header('Location: index.php?action=post&id=' . $_GET['postid']);
     }
 }

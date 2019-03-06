@@ -124,7 +124,7 @@ function postEditAdmin($id, $title, $content)
 
 	$postEdit = $registerManager->editPost($title, $content, $id);
 
-	header('Location: indexx.php?action=Edit&id='.$id);
+	header('Location: index.php?action=Edit&id='.$id);
 
 }
 
