@@ -6,13 +6,14 @@ require_once("model/Manager.php");
 
 class RegisterManager extends Manager
 {
+    // Ajouter un admin en BDD
 	public function addAdmin($pseudo, $email, $pass_hashe)
 	{
         $db = $this->dbConnect();     
 		$inscription = $db->prepare('INSERT INTO membres (pseudo, email, pass, date_inscription) VALUES(:pseudo, :email, :pass, now())');
 		$dataAdmin = $inscription->execute(array('pseudo' => $pseudo, 'email' => $email , 'pass' => $pass_hashe));
 	}
-
+    // Récupère l'id et le MDP via le pseudo
     public function getAdmin($pseudo)
     {
         $db = $this->dbConnect();
@@ -22,7 +23,7 @@ class RegisterManager extends Manager
 
         return $result;
     }
-
+    // Récupère les billets pour le côté Back
     public function getPostsAdmin()
     {
         $db = $this->dbConnect();
@@ -31,16 +32,16 @@ class RegisterManager extends Manager
 
         return $req;
     }
-
+    // Récupère les commentaires côté Back
     public function getCommentsAdmin()
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments ORDER BY comment_date DESC');
+        $comments = $db->prepare('SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, signaler, valider FROM comments ORDER BY signaler DESC, comment_date DESC');
         $comments->execute();
 
         return $comments;
     }
-
+    // Vérif en BDD existance du pseudo
     public function verifyPseudo($pseudo) 
     {
         $db = $this->dbConnect();
@@ -50,7 +51,7 @@ class RegisterManager extends Manager
 
         return $found;
     }
-
+    // Récupère un billet via l'id 
     public function getPostAdmin($postId)
     {
         $db = $this->dbConnect();
@@ -60,14 +61,14 @@ class RegisterManager extends Manager
 
         return $post;
     }
-
+    // Ajout d'un nouvel acrticle
     public function addNewPost($title, $content)
     {
         $db = $this->dbConnect();
         $req = $db->prepare('INSERT INTO posts (title, content, creation_date) VALUES(?, ?, now())');
         $newPost = $req->execute(array($title, $content));
     }
-
+    // Suppression d'un article via l'id
     public function deletePost($id)
     {
         $db = $this->dbConnect();
@@ -77,7 +78,25 @@ class RegisterManager extends Manager
         return $del;
 
     }
+    // Valider un commentaire signalé
+    public function validComment($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('UPDATE comments SET valider = 0, signaler = 0 WHERE id = :id');
+        $comValid = $req->execute(array('id' => $id));
 
+        return $comValid;
+    }
+    // Suppression d'un commentaire signalé
+    public function deleteComment($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM comments WHERE id = :id');
+        $deleteCom = $req->execute(array('id' => $id));
+
+        return $deleteCom;
+    }
+    // Modification d'un article existant
     public function editPost($title, $content, $id)
     {
         $db = $this->dbConnect();
