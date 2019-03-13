@@ -3,15 +3,17 @@
 // Chargement des classes
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
-
+// Récupère les articles (compte les commentaires) redirige vers la vue des articles
 function listPosts()
 {
     $postManager = new \Tp\Blog\Model\PostManager();
+    $commentManager = new \Tp\Blog\Model\CommentManager();
     $posts = $postManager->getPosts();
+    $numbCom = $commentManager->countComments();
 
     require('view/frontend/listPostsView.php');
 }
-
+// Récupère, affiche un article et récupère les commentaires associés à l'article
 function post()
 {
     $postManager = new \Tp\Blog\Model\PostManager();
@@ -20,9 +22,10 @@ function post()
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
 
+
     require('view/frontend/postView.php');
 }
-
+// Ajout d'un commentaire et redirige sur la même page avec le commentaire ajouté
 function addComment($postId, $author, $comment)
 {
     $commentManager = new \Tp\Blog\Model\CommentManager();
@@ -36,28 +39,12 @@ function addComment($postId, $author, $comment)
         header('Location: index.php?action=post&id=' . $postId);
     }
 }
-
-function comment()
+// Signaler un commentaire 
+function commentSignale($id)
 {
     $commentManager = new \Tp\Blog\Model\CommentManager();
 
-    $com = $commentManager->getComment($_GET['id']);
-    
-    require('view/frontend/commentView.php');
-}
+    $comSignale = $commentManager->signalerComment($id);
 
-function addCommentEdit($id, $author, $comment)
-{
-    $commentManager = new \Tp\Blog\Model\CommentManager();
-
-    $commentEdit = $commentManager->editComment($author, $comment, $id);
-
-    if ($commentEdit == false)
-    {
-        throw new Exception('Impossible d\'éditer le commentaire !'); 
-    }
-    else
-    {
-        header('Location: index.php?action=post&id=' . $_GET['postid']);
-    }
+    header('Location: index.php?action=post&id=' . $_GET['postid']);
 }
