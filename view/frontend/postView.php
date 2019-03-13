@@ -6,13 +6,13 @@
         <h1><a href="index.php?action=listPosts">Retour à la liste des billets</a></h1>
     </div>
 </div>
-<article class="col-block">
-    <h1 class="h01"><a href="blog-single.html"><?= htmlspecialchars($post['title']) ?></a></h1>
+<article class="center">
+    <h1 class="h01"><?= $post['title'] ?></h1>
     <div class="blog-date">
-        <a href="blog-single.html"><?= $data['creation_date_fr'] ?></a>
+        <a href=""><?= $data['creation_date_fr'] ?></a>
     </div>
     <p>
-        <?= nl2br(htmlspecialchars($post['content'])) ?>
+        <?= $post['content'] ?>
     </p>
 </article>
 <div class="row narrow section-intro has-bottom-sep">
@@ -36,12 +36,28 @@
 <div class="row narrow section-intro has-bottom-sep">
     <div class="col-full">
         <?php
-        while ($comment = $comments->fetch())
+        // Parcours du tableau comments
+        $data = ($comments->fetchAll());
+        foreach ($data as $value)
         {
+            $commentSignale = intval($value['signaler']);
+            $commentValidate = intval($value['valider']);
         ?>
-            <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?>(<a href="indexx.php?action=updateComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>"> modifier </a>)</p>
-            <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+            <p>
+                <strong>
+                    <?= htmlspecialchars($value['author']) ?>
+                </strong> le <?= $value['comment_date_fr'] ?>
+                <!-- Condition qui permet de signaler qu'une fois un commentaire -->
+                (<a href="index.php?action=Signaler&amp;id=<?= $value['id'] ?>&amp;postid=<?= $post['id'] ?>" <?php echo (($commentValidate == 0) ? 'style="display: none"': " ") ?>> Signaler </a>)
+            </p>
+            <!-- Condition ternaire qui indique que le commentaire est en cours de modération -->
+            <p <?php echo (($commentSignale == 0) ?  'style="display:none"': " ") ?>>Votre commentaire a été signalé!</p>
+            <!-- Condition ternaire qui permet d'afficher le commentaire après modération -->
+            <p <?php echo (($commentSignale == 1) ?  'style="display:none"': " ") ?>>
+                 <?= nl2br(htmlspecialchars($value['comment'])) ?>
+            </p>
         <?php
+        $comments->closeCursor();
         }
         ?>
     </div>
