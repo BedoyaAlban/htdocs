@@ -16,7 +16,8 @@
                                     <th class="admin">Author</th>
                                     <th class="admin">Date</th>
                                     <th class="admin">Content</th>
-                                    <th class="admin">Moderate</th>
+                                    <th class="admin">Certify</th>
+                                    <th class="admin">Delete</th>
                                 </tr>
                             </thead>
 
@@ -25,30 +26,47 @@
                                     <th class="admin">Author</th>
                                     <th class="admin">Date</th>
                                     <th class="admin">Content</th>
-                                    <th class="admin">Moderate</th>
+                                    <th class="admin">Certify</th>
+                                    <th class="admin">Delete</th>
                                 </tr>
                             </tfoot>
 
                             <tbody>
                                 <?php
+                                // Boucle parcourant le tableau comments
                                     $data = ($comments->fetchAll());
                                     foreach ($data as $value) {
+                                        // Conversion string en nombre
+                                       $commentSignale = intval($value['signaler']);
+                                       $commentValidate = intval($value['valider']);
                                        ?>
-                                <tr>
+                                <!-- Condition tenaire pour différencier un commentaire signalé -->
+                                <tr <?php echo (($commentSignale == 1) ? 'style="background-color: rgba(134, 33, 33, 0.6)"': " ") ?>>
                                     <td> <?= $value['author']?></td>
                                     <td> <?= $value['comment_date_fr']?></td>
                                     <td> <?= $value['comment']?></td>
                                     <td>
-                                        <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                            <a href="index.php?action=Edit&amp;id=<?= $value['id'] ?>">
-                                                <button class="btn btn-icon btn-xs edit" data-title="Edit" data-toggle="modal" data-target="#edit" >
-                                                    <i class="im im-edit" aria-hidden="true"></i>
+                                        <!-- Condition ternaire pour un commentaire déjà modéré -->
+                                        <p <?php echo (($commentValidate == 0) ? 'style="display: none"': " ") ?> class="buttons" data-placement="top" data-toggle="tooltip" title="ValidateCom">
+                                            <a href="index.php?action=ValidateCom&amp;id=<?= $value['id'] ?>">
+                                                <button class="btn btn-icon btn-xs edit" data-title="ValidateCom" data-toggle="modal" data-target="#ValidateCom" >
+                                                    <i class="im im-check-mark-circle" aria-hidden="true"></i>
+                                                </button>
+                                            </a>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="buttons" data-placement="top" data-toggle="tooltip" title="DeleteCom">
+                                            <a href="index.php?action=DeleteCom&amp;id=<?= $value['id'] ?>">
+                                                <button class="btn btn-icon btn-xs delete" data-title="DeleteCom" data-toggle="modal" data-target="#DeleteCom">
+                                                    <i class="im im-x-mark-circle" aria-hidden="true"></i>
                                                 </button>
                                             </a>
                                         </p>
                                     </td>
                                 <?php
                                      }
+                                     // Arrêt du parcours du tableau
                                      $comments->closeCursor();
                                      ?>  
                             </tbody>
