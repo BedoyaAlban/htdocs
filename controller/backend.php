@@ -2,12 +2,12 @@
 
 // Chargement des classes
 require_once('model/RegisterManager.php');
-
+// Redirection vers la page pour créer un admin
 function addAdminView() 
 {
 	require('view/backend/registerView.php');
 }
-
+// Ajout d'un admin (hachage du MDP, vérification de la dispo du pseudo et de la conformité de l'email)
 function addAdmin($pseudo, $email, $password_1, $password_2) 
 {
 	$registerManager = new \Tp\Blog\Model\RegisterManager();
@@ -36,7 +36,7 @@ function addAdmin($pseudo, $email, $password_1, $password_2)
 	   
 	}
 }
-
+// Connexion de l'admin si MDP correct et pseudo existe en BDD
 function getAdmin($pseudo)
 {
 	$registerManager = new \TP\Blog\Model\RegisterManager();
@@ -62,19 +62,19 @@ function getAdmin($pseudo)
 	    }
 	}
 }
-
+// Redirection vers la page de connexion
 function connexionView()
 {
 	require('view/backend/connexionView.php');
 }
-
+// Page d'accueil de l'admin
 function adminView()
 {
 	$registerManager = new \TP\Blog\Model\RegisterManager();
 	$posts = $registerManager->getPostsAdmin();
 	require 'view/backend/adminView.php';
 }
-
+// Déconnexion de l'admin, vide la ligne id du tableau session + détruit la session.
 function deconnexion()
 {
 	session_start();
@@ -85,12 +85,12 @@ function deconnexion()
 
 	require('view/backend/connexionView.php');
 }
-
+// Redirection vers la page pour créer un article
 function viewCreate()
 {
 	require 'view/backend/addPostView.php';
 }
-
+// Ajout d'un nouvel article
 function newPostAdmin($title, $content)
 {
 	$registerManager = new \Tp\Blog\Model\RegisterManager();
@@ -99,7 +99,7 @@ function newPostAdmin($title, $content)
 
 	header('Location: indexx.php?action=adminView');
 }
-
+// Redirection vers la page pour modifier un article 
 function postAdmin()
 {
     $registerManager = new \Tp\Blog\Model\RegisterManager();
@@ -108,7 +108,7 @@ function postAdmin()
 
     require('view/backend/editPostView.php');
 }
-
+// Suppression d'un article
 function deletePostAdmin()
 {
 	$registerManager = new \Tp\Blog\Model\RegisterManager();
@@ -117,7 +117,7 @@ function deletePostAdmin()
 
 	header('Location: indexx.php?action=adminView');
 }
-
+// Ajout de l'article modifié
 function postEditAdmin($id, $title, $content)
 {
 	$registerManager = new \Tp\Blog\Model\RegisterManager();
@@ -127,7 +127,7 @@ function postEditAdmin($id, $title, $content)
 	header('Location: index.php?action=Edit&id='.$id);
 
 }
-
+// Affichage d'un article
 function postAdminView() 
 {
 	$registerManager = new \Tp\Blog\Model\RegisterManager();
@@ -136,7 +136,7 @@ function postAdminView()
 
     require('view/backend/postAdminView.php');
 }
-
+// Redirection vers la page pour modérer les commentaires
 function commentsAdminView()
 {
 	$registerManager = new \Tp\Blog\Model\RegisterManager();
@@ -145,3 +145,35 @@ function commentsAdminView()
 
 	require('view/backend/commentsAdminView.php');
 }
+// Actualisation de page avec le commentaire valider
+function adminValidateComment()
+{
+	$registerManager = new \Tp\Blog\Model\RegisterManager();
+
+	$comValid = $registerManager->validComment($_GET['id']);
+
+	header('Location: index.php?action=viewCommentsAdmin');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
