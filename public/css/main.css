@@ -718,6 +718,10 @@ form,
     margin-bottom: 3rem;
 }
 
+p.buttons {
+    margin: 10px 0px 10px 0px;
+}
+
 div.center.admin p {
     background-color: rgba(21, 2, 2, 0.6);
     max-width: 800px;
@@ -850,6 +854,20 @@ textarea, select {
     border-bottom: 2px solid rgba(0, 0, 0, 0.15);
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+}
+
+input#author {
+    display: unset !important;
+    text-align: center;
+    width: 35%;
+    background-color: rgba(225, 224, 224, 0.6);
+}
+
+textarea#comment {
+    display: unset !important;
+    text-align: center;
+    width: 75%;
+    background-color: rgba(225, 224, 224, 0.6);
 }
 
 input.postTitle {
@@ -3686,7 +3704,7 @@ border-radius: 4px;
 
 i.im.im-x-mark-circle {
     padding-left: 2px;
-    padding-top: 3px;
+    padding-top: 4px;
 }
 
 i.im.im-edit {
@@ -3694,8 +3712,13 @@ i.im.im-edit {
 }
 
 i.im.im-eye {
-    padding-top: 5px;
-    padding-left: 1px;
+    padding-top: 4px;
+    padding-left: 2px;
+}
+
+i.im.im-check-mark-circle {
+    padding-left: 2px;
+    padding-top: 4px;
 }
 
 .btn-primary {
