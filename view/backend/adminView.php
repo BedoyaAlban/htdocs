@@ -48,7 +48,7 @@
                                     <td> <?= $value['title']?></td>
                                     <td> <?= $value['creation_date_fr']?></td>
                                     <td>
-                                        <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                        <p class="buttons" data-placement="top" data-toggle="tooltip" title="Edit">
                                             <a href="index.php?action=Edit&amp;id=<?= $value['id'] ?>">
                                                 <button class="btn btn-icon btn-xs edit" data-title="Edit" data-toggle="modal" data-target="#edit" >
                                                     <i class="im im-edit" aria-hidden="true"></i>
@@ -57,7 +57,7 @@
                                         </p>
                                     </td>
                                     <td>
-                                        <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                        <p class="buttons" data-placement="top" data-toggle="tooltip" title="Delete">
                                             <a href="index.php?action=Delete&amp;id=<?= $value['id'] ?>">
                                                 <button class="btn btn-icon btn-xs delete" data-title="Delete" data-toggle="modal" data-target="#delete" >
                                                     <i class="im im-x-mark-circle" aria-hidden="true"></i>
@@ -66,7 +66,7 @@
                                         </p>
                                     </td>
                                     <td>
-                                        <p data-placement="top" data-toggle="tooltip" title="View">
+                                        <p class="buttons" data-placement="top" data-toggle="tooltip" title="View">
                                             <a href="index.php?action=postAdminView&amp;id=<?= $value['id'] ?>">
                                                 <button  class="btn btn-icon btn-xs view" data-title="View" data-toggle="modal" data-target="#view" >
                                                     <i class="im im-eye" aria-hidden="true"></i>
