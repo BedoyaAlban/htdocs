@@ -3,7 +3,7 @@ session_start();
 
 require('controller/frontend.php');
 require('controller/backend.php');
-
+// Routeur
 try {
     if (isset($_GET['action'])) {
     
@@ -19,12 +19,6 @@ try {
                     throw new Exception('Aucun identifiant de billet envoyé');
                 }
                 break;
-            case 'updateComment':
-                comment();
-                break;
-            case 'addEditComment':
-                addCommentEdit($_GET['id'], $_POST['author'], $_POST['comment']);
-                break;
             case 'addComment':
                 if (isset($_GET['id']) && $_GET['id'] > 0) {
                     if (!empty($_POST['author']) && !empty($_POST['comment'])) {
@@ -37,6 +31,9 @@ try {
                 else {
                     throw new Exception('Aucun identifiant de billet envoyé');
                 }
+                break;
+            case 'Signaler':
+                commentSignale($_GET['id']);
                 break;
             case 'registerAdmin':
                 if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
@@ -102,7 +99,10 @@ try {
                         deletePostAdmin();
                     }
                 }
-                break;    
+                break;
+            case 'ValidateCom':
+                    adminValidateComment();
+                    break;    
             default:
                listPosts();
                 break;
