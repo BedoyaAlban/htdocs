@@ -10,8 +10,9 @@ class CommentManager extends Manager
     public function getComments($postId)
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
+        $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, signaler, valider FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
         $comments->execute(array($postId));
+
 
         return $comments;
     }
@@ -24,23 +25,22 @@ class CommentManager extends Manager
 
         return $affectedLines;
     }
-    // Récupère le commentaire à modifier
-    public function getComment($id)
+    // Signaler un commentaire
+    public function signalerComment($id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, author, comment FROM comments WHERE id = ?');
-        $req->execute(array($id));
-        $com = $req->fetch();
+        $req = $db->prepare('UPDATE comments SET signaler = 1 WHERE id = :id');
+        $comSignale = $req->execute(array('id' => $id));
 
-        return $com;
+        return $comSignale;
     }
-    // Envoi du commentaire modifié
-    public function editComment($author, $comment, $id)
+    // Compter le nombre de commentaire dans la table
+    public function countComments()
     {
         $db = $this->dbConnect();
-        $commentEdt = $db->prepare('UPDATE comments SET author = ?, comment = ? WHERE id = ?');
-        $commentEdit = $commentEdt->execute(array($author, $comment, $id));
-
-        return $commentEdit;
+        $numbCom = $db->prepare('SELECT COUNT(*) AS post_id FROM comments WHERE post_id = 2');
+        $numbCom->execute();
+        
+        return $numbCom;
     }
 }
