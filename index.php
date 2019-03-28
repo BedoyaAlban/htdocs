@@ -16,7 +16,7 @@ try {
                     post();
                 }
                 else {
-                    throw new Exception('Aucun identifiant de billet envoyé');
+                    post();
                 }
                 break;
             case 'addComment':
@@ -25,11 +25,11 @@ try {
                         addComment($_GET['id'], $_POST['author'], $_POST['comment']);
                     }
                     else {
-                        throw new Exception('Tous les champs ne sont pas remplis !');
+                        post();
                     }
                 }
                 else {
-                    throw new Exception('Aucun identifiant de billet envoyé');
+                    post();
                 }
                 break;
             case 'Signaler':
@@ -38,16 +38,22 @@ try {
             case 'registerAdmin':
                 if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
                     addAdmin($_POST['pseudo'], $_POST['email'], $_POST['password_1'], $_POST['password_2']);
+                } else {
+                    connexionView();
                 }
                 break;
             case 'addAdminView':
                 if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
                     addAdminView();
+                } else {
+                    connexionView();
                 }
                 break;
             case 'adminView': 
                 if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
                     adminView();   
+                } else {
+                    connexionView();
                 }
                 break;
             case 'Edit':
@@ -55,10 +61,12 @@ try {
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
                         postAdmin();
                     }
+                } else {
+                    connexionView();
                 }
                 break;
             case 'login':
-                getAdmin($_POST['pseudo']);
+                connectAdmin($_POST['pseudo']);
                 break;
             case 'connexion':
                 connexionView();
@@ -66,31 +74,43 @@ try {
             case 'deconnexion':
                 if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
                     deconnexion();
+                } else {
+                    connexionView();
                 }
                 break;
             case 'postAdminView':
                 if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
                     postAdminView();
+                } else {
+                    connexionView();
                 }
                 break;
             case 'viewCommentsAdmin':
                 if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
                     commentsAdminView();
+                } else {
+                    connexionView();
                 }
                 break;
             case 'View':
                 if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {
                     viewCreate();
+                } else {
+                    connexionView();
                 }
                 break;
             case 'Create':
                 if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) { 
                     newPostAdmin($_POST['postTitle'], $_POST['newPost']);
+                } else {
+                    connexionView();
                 }
                 break;
             case 'Modify':
                 if (isset($_SESSION['id']) && ($_SESSION['id'] > 0)) {    
                     postEditAdmin($_GET['id'], $_POST['editPostTitle'], $_POST['editPost']);
+                } else {
+                    connexionView();
                 }
                 break;
             case 'Delete':
@@ -98,8 +118,12 @@ try {
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
                         deletePostAdmin();
                     }
+                } else {
+                    connexionView();
                 }
                 break;
+            case 'DeleteCom':
+                    adminDeleteComment($_GET['id']);
             case 'ValidateCom':
                     adminValidateComment();
                     break;    

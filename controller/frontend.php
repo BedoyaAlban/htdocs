@@ -7,9 +7,7 @@ require_once('model/CommentManager.php');
 function listPosts()
 {
     $postManager = new \Tp\Blog\Model\PostManager();
-    $commentManager = new \Tp\Blog\Model\CommentManager();
     $posts = $postManager->getPosts();
-    $numbCom = $commentManager->countComments();
 
     require('view/frontend/listPostsView.php');
 }
@@ -33,7 +31,7 @@ function addComment($postId, $author, $comment)
     $affectedLines = $commentManager->postComment($postId, $author, $comment);
 
     if ($affectedLines === false) {
-        throw new Exception('Impossible d\'ajouter le commentaire !');
+        header('Location: index.php?action=post&id=' . $postId);
     }
     else {
         header('Location: index.php?action=post&id=' . $postId);

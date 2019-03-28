@@ -119,15 +119,6 @@
     <!-- blog
     ================================================== -->
     <section id="blog" class="s-blog target-section">
-        <div class="row narrow section-intro has-bottom-sep">
-            <div class="col-full">
-                <h3>Journal</h3>
-                <h1>Latest From The Blog.</h1>
-                <p class="lead admin">Lorem ipsum Dolor adipisicing nostrud et aute. 
-                Excepteur amet commodo ea dolore irure esse Duis nulla sint fugiat cillum 
-                ullamco proident aliquip quis qui voluptate dolore veniam Ut laborum non est in officia.</p>
-            </div>
-        </div>
     <?= $content ?>
     </section> <!-- end s-blog -->
     <!-- s-stats

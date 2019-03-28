@@ -6,7 +6,7 @@ require_once("model/Manager.php");
 
 class RegisterManager extends Manager
 {
-    // Ajouter un admin en BDD
+    // Ajouter un admin en BDD en ajoutant le pseudo l'email et le MDP haché (vient du formulaire sign up)
 	public function addAdmin($pseudo, $email, $pass_hashe)
 	{
         $db = $this->dbConnect();     
@@ -41,7 +41,7 @@ class RegisterManager extends Manager
 
         return $comments;
     }
-    // Vérif en BDD existance du pseudo
+    // Vérif en BDD existance du pseudo via le pseudo du formulaire
     public function verifyPseudo($pseudo) 
     {
         $db = $this->dbConnect();
@@ -51,7 +51,7 @@ class RegisterManager extends Manager
 
         return $found;
     }
-    // Récupère un billet via l'id 
+    // Récupère un billet via l'id du post
     public function getPostAdmin($postId)
     {
         $db = $this->dbConnect();
@@ -61,7 +61,7 @@ class RegisterManager extends Manager
 
         return $post;
     }
-    // Ajout d'un nouvel acrticle
+    // Ajout d'un nouvel article en ajoutant titre et contenu (vient du formulaire) 
     public function addNewPost($title, $content)
     {
         $db = $this->dbConnect();
@@ -78,7 +78,7 @@ class RegisterManager extends Manager
         return $del;
 
     }
-    // Valider un commentaire signalé
+    // Valider un commentaire signalé via l'id 
     public function validComment($id)
     {
         $db = $this->dbConnect();
@@ -87,7 +87,7 @@ class RegisterManager extends Manager
 
         return $comValid;
     }
-    // Suppression d'un commentaire signalé
+    // Suppression d'un commentaire signalé via l'id
     public function deleteComment($id)
     {
         $db = $this->dbConnect();
@@ -96,7 +96,7 @@ class RegisterManager extends Manager
 
         return $deleteCom;
     }
-    // Modification d'un article existant
+    // Modification d'un article existant 
     public function editPost($title, $content, $id)
     {
         $db = $this->dbConnect();

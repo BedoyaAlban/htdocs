@@ -37,7 +37,7 @@ function addAdmin($pseudo, $email, $password_1, $password_2)
 	}
 }
 // Connexion de l'admin si MDP correct et pseudo existe en BDD
-function getAdmin($pseudo)
+function connectAdmin($pseudo)
 {
 	$registerManager = new \TP\Blog\Model\RegisterManager();
 	$result = $registerManager->getAdmin($pseudo);
@@ -83,7 +83,7 @@ function deconnexion()
 
 	session_destroy();
 
-	require('view/backend/connexionView.php');
+	header('Location: index.php?action=connexion');
 }
 // Redirection vers la page pour créer un article
 function viewCreate()
@@ -97,7 +97,7 @@ function newPostAdmin($title, $content)
 
 	$newPost = $registerManager->addNewPost($title, $content);
 
-	header('Location: indexx.php?action=adminView');
+	header('Location: index.php?action=adminView');
 }
 // Redirection vers la page pour modifier un article 
 function postAdmin()
@@ -115,7 +115,7 @@ function deletePostAdmin()
 
 	$req = $registerManager->deletePost($_GET['id']);
 
-	header('Location: indexx.php?action=adminView');
+	header('Location: index.php?action=adminView');
 }
 // Ajout de l'article modifié
 function postEditAdmin($id, $title, $content)
@@ -151,6 +151,15 @@ function adminValidateComment()
 	$registerManager = new \Tp\Blog\Model\RegisterManager();
 
 	$comValid = $registerManager->validComment($_GET['id']);
+
+	header('Location: index.php?action=viewCommentsAdmin');
+}
+// Suppression du commentaire indésirable
+function adminDeleteComment()
+{
+	$registerManager = new \Tp\Blog\Model\RegisterManager();
+
+	$comDelete = $registerManager->deleteComment($_GET['id']);
 
 	header('Location: index.php?action=viewCommentsAdmin');
 }

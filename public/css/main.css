@@ -1185,6 +1185,18 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     padding-bottom: 45px;
 }
 
+div.commentaire hr {
+    height: 1px;
+    margin: auto;
+    width: 240px;
+    background-color: rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.commentaire {
+    padding-top: 25px;
+}
+
 /* ------------------------------------------------------------------- 
  * ## alert box - (_alert-box.scss)
  * ------------------------------------------------------------------- */
@@ -3270,15 +3282,7 @@ h3.title.admin{
  * # blog - (_site-layout.scss)
  *
  * ------------------------------------------------------------------- */
-div.centers {
-    /*background-image: url('../../public/assets/img/alaska.png');
-    background-image: url('../../public/assets/img/Alaska-1.png');*/
-    background-image: url('../../public/assets/img/Alaska-2.jpg');
-    background-repeat: no-repeat;
-    position: relative;
-    background-size: cover;
-    background-position: top center;
-}
+
 .s-blog {
     padding-top: 15rem;
     padding-bottom: 9.6rem;

@@ -24,12 +24,7 @@
                         <div class="blog-cat">
                                 <a href="index.php?action=post&amp;id=<?= $data['id'] ?>">
                                     <!-- Condition permettant d'afficher le nombre de commentaires -->
-                                    <?php if ($data['id'] == 2) {
-                                    $results = $numbCom->fetchAll();
-                                    foreach($results as $line){
-                                        echo $line['post_id'].'  ';
-                                    } $numbCom->closeCursor();
-                                } ?>Commentaires</a>
+                                    <?= $data['nbCom']?> <?php echo ($data['nbCom'] > 1) ? 'Commentaires' : 'Commentaire'; ?></a>
                         </div>                       
                     </article>
                 <?php

@@ -42,9 +42,9 @@
                                        ?>
                                 <!-- Condition tenaire pour différencier un commentaire signalé -->
                                 <tr <?php echo (($commentSignale == 1) ? 'style="background-color: rgba(134, 33, 33, 0.6)"': " ") ?>>
-                                    <td> <?= $value['author']?></td>
+                                    <td> <?= htmlspecialchars($value['author'])?></td>
                                     <td> <?= $value['comment_date_fr']?></td>
-                                    <td> <?= $value['comment']?></td>
+                                    <td> <?= substr(htmlspecialchars($value['comment']), 0, 40)?></td>
                                     <td>
                                         <!-- Condition ternaire pour un commentaire déjà modéré -->
                                         <p <?php echo (($commentValidate == 0) ? 'style="display: none"': " ") ?> class="buttons" data-placement="top" data-toggle="tooltip" title="ValidateCom">

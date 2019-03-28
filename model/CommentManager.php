@@ -6,7 +6,7 @@ require_once("model/Manager.php");
 
 class CommentManager extends Manager
 {
-    // Récupere les commentaires
+    // Récupere les commentaires avec l'id du post
     public function getComments($postId)
     {
         $db = $this->dbConnect();
@@ -16,7 +16,7 @@ class CommentManager extends Manager
 
         return $comments;
     }
-    // Post un commentaire
+    // Post un commentaire avec l'id du post, l'auteur et le commentaire (vient du formulaire)
     public function postComment($postId, $author, $comment)
     {
         $db = $this->dbConnect();
@@ -25,7 +25,7 @@ class CommentManager extends Manager
 
         return $affectedLines;
     }
-    // Signaler un commentaire
+    // Signaler un commentaire via l'id 
     public function signalerComment($id)
     {
         $db = $this->dbConnect();
@@ -33,14 +33,5 @@ class CommentManager extends Manager
         $comSignale = $req->execute(array('id' => $id));
 
         return $comSignale;
-    }
-    // Compter le nombre de commentaire dans la table
-    public function countComments()
-    {
-        $db = $this->dbConnect();
-        $numbCom = $db->prepare('SELECT COUNT(*) AS post_id FROM comments WHERE post_id = 2');
-        $numbCom->execute();
-        
-        return $numbCom;
     }
 }
