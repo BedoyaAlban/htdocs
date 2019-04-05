@@ -15,7 +15,8 @@ class PostManager extends Manager
             FROM comments c 
             RIGHT JOIN posts p ON c.post_id = p.id 
             GROUP BY p.id 
-            ORDER BY creation_date');
+            ORDER BY creation_date DESC 
+            LIMIT 0,5');
         $req->execute();
 
         return $req;
@@ -30,4 +31,21 @@ class PostManager extends Manager
 
         return $post;
     }
+    // public function countAllPosts()
+    /*{
+    $db = $this->dbConnect();
+    $req = $db->prepare('SELECT COUNT(*) AS AllPost from posts ORDER BY creation_date');
+    $req->execute();
+    $posts = $req->fetchAll();
+    return $posts;
+    }
+
+    / La requête sql pour récupérer les posts de la page actuelle.
+    public function getAllPosts
+     $db = $this->dbConnect();
+    $req = $db->prepare('SELECT * FROM posts ORDER BY id DESC LIMIT '.$premiereEntree.', '.$messagesParPage.'');
+    $req->execute();
+    
+    return $req;
+
 }

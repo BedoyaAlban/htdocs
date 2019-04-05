@@ -32,6 +32,9 @@ try {
                     post();
                 }
                 break;
+            case 'pagination':
+                pagination();
+                break;
             case 'Signaler':
                 commentSignale($_GET['id']);
                 break;

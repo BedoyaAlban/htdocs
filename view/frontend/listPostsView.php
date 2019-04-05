@@ -32,6 +32,7 @@
                 // Fin du parcours du tableau
                 $posts->closeCursor();
                 ?>
+                <a href="index.php?action=pagination">Tout les articles....</a>
            </div>
         </div>        
 <?php $content = ob_get_clean(); ?>
