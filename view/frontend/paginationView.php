@@ -8,11 +8,8 @@
         <div class="centers">
             <div class="blog-list block-1-2 block-tab-full">
             <?php
-
             $messagesParPage=5;
-
-            $nombreDePages=ceil($posts/$messagesParPage);
- 
+            $nombreDePages=ceil(intval($nbPosts)/$messagesParPage);
             if(isset($_GET['page'])) // Si la variable $_GET['page'] existe...
             {
                  $pageActuelle=intval($_GET['page']);
@@ -25,41 +22,50 @@
             else // Sinon
             {
                  $pageActuelle=1; // La page actuelle est la n°1    
-            }
+            }          
+            $premiereEntree=($pageActuelle-1)*$messagesParPage; // On calcul la première entrée à lire           
+                // Parcours du tableau posts
+                $results = $req->fetchAll();
+                foreach ($results as $data)
+                {
+               ?>
+               <article class="col-block">                             
+                    <div class="blog-date">
+                        <a href="index.php?action=post&amp;id=<?= $data['id'] ?>"><?= $data['creation_date_fr'] ?></a>
+                    </div>                       
+                    <h2 class="h01">
+                        <a href="index.php?action=post&amp;id=<?= $data['id'] ?>"><?= $data['title'] ?></a>
+                    </h2>
+                    <p class="lead">
+                    <?= $data['content'] ?>
+                    </p>
+                    <div class="blog-cat">
+                        <a href="index.php?action=post&amp;id=<?= $data['id'] ?>">
+                        <!-- Condition permettant d'afficher le nombre de commentaires -->
+                        <?= $data['nbCom']?> <?php echo ($data['nbCom'] > 1) ? 'Commentaires' : 'Commentaire'; ?></a>
+                    </div>                       
+                    </article> 
+    <?php
+    }
+    // Fin du parcours du tableau
+    $req->closeCursor();     
              
-            $premiereEntree=($pageActuelle-1)*$messagesParPage; // On calcul la première entrée à lire
-             
-            
-             
-            while($donnees_messages= $req->fetchAll()) // On lit les entrées une à une grâce à une boucle
-            {
-                 //Je vais afficher les messages dans des petits tableaux. C'est à vous d'adapter pour votre design...
-                 //De plus j'ajoute aussi un nl2br pour prendre en compte les sauts à la ligne dans le message.
-                 echo '<table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
-                            <tr>
-                                 <td><strong>Ecrit par : '.stripslashes($donnees_messages['author']).'</strong></td>
-                            </tr>
-                            <tr>
-                                 <td>'.nl2br(stripslashes($donnees_messages['content'])).'</td>
-                            </tr>
-                        </table><br /><br />';
-                //J'ai rajouté des sauts à la ligne pour espacer les messages.   
-            }
-             
-            echo '<p align="center">Page : '; //Pour l'affichage, on centre la liste des pages
-            for($i=1; $i<=$nombreDePages; $i++) //On fait notre boucle
-            {
-                 //On va faire notre condition
-                 if($i==$pageActuelle) //Si il s'agit de la page actuelle...
-                 {
-                     echo ' [ '.$i.' ] '; 
-                 }  
-                 else //Sinon...
-                 {
-                      echo ' <a href="index.php?page='.$i.'">'.$i.'</a> ';
-                 }
-            }
-            echo '</p>';
-            ?>
-
+        echo '<div class=bottom">Page : '; //Pour l'affichage, on centre la liste des pages
+        for($i=1; $i<=$nombreDePages; $i++) //On fait notre boucle
+        {
+             //On va faire notre condition
+             if($i==$pageActuelle) //Si il s'agit de la page actuelle...
+             {
+                 echo ' [ '.$i.' ] '; 
+             }  
+             else //Sinon...
+             {
+                  echo ' <a href="index.php?action=allPosts&amp;page='.$i.'">'.$i.'</a> ';
+             }
+        }
+        echo '</div>';
+        ?>
+        </div>
+    </div>
+<?php $content = ob_get_clean(); ?>
 <?php require('template.php'); ?>

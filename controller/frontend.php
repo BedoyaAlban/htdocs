@@ -47,12 +47,12 @@ function commentSignale($id)
     header('Location: index.php?action=post&id=' . $_GET['postid']);
 }
 // Pagination afficher tout les articles
-function pagination()
+function allPosts($nbPages)
 {
     $postManager = new \Tp\Blog\Model\PostManager();
 
-    $posts = $postManager->countAllPosts();
-    $req = $postManager->getAllPosts();
+    $nbPosts = $postManager->countAllPosts();
+    $req = $postManager->getAllPosts($nbPages);
 
     require('view/frontend/paginationView.php');
 

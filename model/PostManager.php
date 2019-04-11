@@ -31,21 +31,24 @@ class PostManager extends Manager
 
         return $post;
     }
-    // public function countAllPosts()
-    /*{
-    $db = $this->dbConnect();
-    $req = $db->prepare('SELECT COUNT(*) AS AllPost from posts ORDER BY creation_date');
-    $req->execute();
-    $posts = $req->fetchAll();
-    return $posts;
+    public function countAllPosts()
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT COUNT(*) AS nbPosts from posts ORDER BY creation_date');
+        $req->execute();
+        $nbPosts = $req->fetch();
+        return $nbPosts['nbPosts'];
     }
 
-    / La requête sql pour récupérer les posts de la page actuelle.
-    public function getAllPosts
-     $db = $this->dbConnect();
-    $req = $db->prepare('SELECT * FROM posts ORDER BY id DESC LIMIT '.$premiereEntree.', '.$messagesParPage.'');
-    $req->execute();
-    
-    return $req;
-
+    // La requête sql pour récupérer les posts de la page actuelle.
+    public function getAllPosts($nbPages)
+    {
+        $db = $this->dbConnect();
+        $debut = 5 * ($nbPages-1);
+        $fin = 5 * $nbPages;
+        $req = $db->prepare('SELECT * FROM posts ORDER BY id DESC LIMIT '.$debut.', '.$fin);
+        $req->execute();
+        
+        return $req;
+    }
 }

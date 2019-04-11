@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', '1');
 session_start();
 
 require('controller/frontend.php');
@@ -32,8 +33,12 @@ try {
                     post();
                 }
                 break;
-            case 'pagination':
-                pagination();
+            case 'allPosts':
+                if (isset($_GET['page'])){
+                  allPosts($_GET['page']);  
+                } else {
+                    allPosts(1);/* attribut pour aller sur la première page s'il n'y a pas plusieurs pages */
+                }
                 break;
             case 'Signaler':
                 commentSignale($_GET['id']);
