@@ -1,0 +1,48 @@
+Options +FollowSymlinks
+
+RewriteEngine On
+RewriteBase /blog
+
+RewriteRule ^([a-zA-Z]*)$ index.php?action=$1 [L]
+
+RewriteRule ^([a-zA-Z]*)-([0-9]*)$ index.php?action=$1&id=$2 [L]
+
+# RewriteRule ^post-([0-9]*)$ index.php?action=post&id=$1 [L]
+
+# RewriteRule ^allPosts-([0-9]*)$ index.php?action=allPosts&page=$1 [L]
+
+
+
+
+# RewriteRule ^addEditComment-([0-9]*)-([0-9]*)$ index.php?action=addEditComment&id=$1&postid=$2 [L]
+
+# RewriteRule ^Edit-([0-9]*)$ index.php?action=Edit&id=$1 [L]
+# RewriteRule ^Delete-([0-9]*)$ index.php?action=Delete&id=$1 [L]
+# RewriteRule ^postAdminView-([0-9]*)$ index.php?action=postAdminView&id=$1 [L]
+# RewriteRule ^ValidateCom-([0-9]*)$ index.php?action=ValidateCom&id=$1 [L]
+# RewriteRule ^DeleteCom-([0-9]*)$ index.php?action=DeleteCom&id=$1 [L]
+# RewriteRule ^Modify-([0-9]*)$ index.php?action=Modify&id=$1 [L]
+
+
+#--------------------------------------------------
+# Répertoire : /blog/
+#--------------------------------------------------
+
+# Le serveur doit suivre les liens symboliques :
+# Options +FollowSymlinks
+
+# Activation du module de réécriture d'URL :
+# RewriteEngine on
+# RewriteBase /blog
+
+#--------------------------------------------------
+# Règles de réécriture d'URL :
+#--------------------------------------------------
+
+# Article sans numéro de page :
+# RewriteRule ^article-([0-9]+)-([0-9]+).html$   /articles/article.php?id=$1&rubrique=$2 [L]
+# RewriteRule ^blog-([a-z]*).html$   /index.php?action=$1 [L]
+# RewriteRule ^([a-z]+)\.html$ /index.php?action=$1&id=$2 [R,L] 
+
+# Article avec numéro de page :
+# RewriteRule ^article-([0-9]+)-([0-9]+)-([0-9]+).html   /articles/article.php?id=$1&page=$2&rubrique=$3 [L]
