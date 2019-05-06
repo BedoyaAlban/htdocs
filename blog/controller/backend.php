@@ -83,7 +83,7 @@ function deconnexion()
 
 	session_destroy();
 
-	header('Location: index.php?action=connexion');
+	header('Location: connexion');
 }
 // Redirection vers la page pour créer un article
 function viewCreate()
@@ -97,7 +97,7 @@ function newPostAdmin($title, $content)
 
 	$newPost = $registerManager->addNewPost($title, $content);
 
-	header('Location: index.php?action=adminView');
+	header('Location: adminView');
 }
 // Redirection vers la page pour modifier un article 
 function postAdmin()
@@ -115,7 +115,7 @@ function deletePostAdmin()
 
 	$req = $registerManager->deletePost($_GET['id']);
 
-	header('Location: index.php?action=adminView');
+	header('Location: adminView');
 }
 // Ajout de l'article modifié
 function postEditAdmin($id, $title, $content)
@@ -124,7 +124,7 @@ function postEditAdmin($id, $title, $content)
 
 	$postEdit = $registerManager->editPost($title, $content, $id);
 
-	header('Location: index.php?action=Edit&id='.$id);
+	header('Location: Edit-'.$id);
 
 }
 // Affichage d'un article
@@ -152,7 +152,7 @@ function adminValidateComment()
 
 	$comValid = $registerManager->validComment($_GET['id']);
 
-	header('Location: index.php?action=viewCommentsAdmin');
+	header('Location: viewCommentsAdmin');
 }
 // Suppression du commentaire indésirable
 function adminDeleteComment()
@@ -161,7 +161,7 @@ function adminDeleteComment()
 
 	$comDelete = $registerManager->deleteComment($_GET['id']);
 
-	header('Location: index.php?action=viewCommentsAdmin');
+	header('Location: viewCommentsAdmin');
 }
 
 

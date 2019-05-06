@@ -34,7 +34,7 @@ try {
                 break;
             case 'allPosts':
                 if (isset($_GET['page'])){
-                  die();allPosts($_GET['page']);  
+                  allPosts($_GET['page']);  
                 } else {
                     allPosts(1);/* attribut pour aller sur la première page s'il n'y a pas plusieurs pages */
                 }

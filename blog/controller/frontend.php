@@ -31,10 +31,10 @@ function addComment($postId, $author, $comment)
     $affectedLines = $commentManager->postComment($postId, $author, $comment);
 
     if ($affectedLines === false) {
-        header('Location: index.php?action=post&id=' . $postId);
+        header('Location: post-' . $postId);
     }
     else {
-        header('Location: index.php?action=post&id=' . $postId);
+        header('Location: post-' . $postId);
     }
 }
 // Signaler un commentaire 
@@ -44,7 +44,7 @@ function commentSignale($id)
 
     $comSignale = $commentManager->signalerComment($id);
 
-    header('Location: index.php?action=post&id=' . $_GET['postid']);
+    header('Location: post-' . $_GET['postid']);
 }
 // Pagination afficher tout les articles
 function allPosts($nbPages)
