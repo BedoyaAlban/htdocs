@@ -17,7 +17,7 @@ function addAdmin($pseudo, $email, $password_1, $password_2)
     $found = $registerManager->verifyPseudo($pseudo); /* if (trim($pseudo) != "" ) */
   
     if ($found != 0) {
-    	throw new Exception('Pseudo déjà utilisé!');
+    	header('Location: addAdminView');
 
     }
 	if ( $password_1 != $password_2) {
@@ -32,7 +32,7 @@ function addAdmin($pseudo, $email, $password_1, $password_2)
 		require('view/backend/connexionView.php');
     } else
     {
-        throw new Exception('L\'adresse ' . $email . ' n\'est pas valide, recommencez !');
+        header('Location: addAdminView');
 	   
 	}
 }
@@ -45,7 +45,7 @@ function connectAdmin($pseudo)
 	$isPasswordCorrect = password_verify($_POST['password'], $result['pass']);
 	if (!$result)
 	{
-	    throw new Exception('Mauvais identifiant ou mot de passe !');
+	    header('Location: connexion');;
 	}
 	else
 	{
@@ -58,7 +58,7 @@ function connectAdmin($pseudo)
 	        header("Location: homeAdminView");
 	    }
 	    else {
-	        throw new Exception('Mauvais identifiant ou mot de passe !'); 
+	        header('Location: connexion');
 	    }
 	}
 }

@@ -32,7 +32,7 @@
                     <?= htmlspecialchars($value['author']) ?>
                 </strong> le <?= $value['comment_date_fr'] ?>
                 <!-- Condition qui permet de signaler qu'une fois un commentaire -->
-                <a href="Signaler-<?= $value['id'] ?>" <?php echo (($commentValidate == 0) ? 'style="display: none"': " ") ?>> (Signaler) </a>
+                <a href="Signaler-<?= $value['id'] ?>-<?= $post['id'] ?>" <?php echo (($commentValidate == 0) ? 'style="display: none"': " ") ?>> (Signaler) </a>
             </p>
             <!-- Condition ternaire qui permet d'afficher le commentaire après modération -->
             <p <?php echo (($commentSignale == 1) ?  'style="display:none"': " ") ?>>

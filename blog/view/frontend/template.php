@@ -46,7 +46,6 @@
             <ul class="header-nav">
                 <li class="current"><a href="/blog/listPosts" title="home">Home</a></li>
                 <li><a class="smoothscroll"  href="#blog" title="blog">Blog</a></li>
-                <li><a class="smoothscroll"  href="#contact" title="contact">Contact</a></li>
             </ul>
         </nav>
 
@@ -146,8 +145,8 @@
 
             <div class="col-twelve">
                 <div class="copyright">
-                    <span>© Copyright Hola 2017</span> 
-                    <span>Design by <a href="https://www.styleshout.com/">styleshout</a></span>	
+                    <span>© Copyright WebAgency</span> 
+                    <span>Design by <a href="https://www.webagency-france.com/">WebAgency</a></span>	
                 </div>
 
                 <div class="go-top">
